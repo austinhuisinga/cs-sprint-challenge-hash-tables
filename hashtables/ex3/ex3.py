@@ -4,7 +4,22 @@ def intersection(arrays):
     """
     # Your code here
 
-    return result
+    cache = {}
+
+    for i in range(len(arrays)):
+        for j in arrays[i]:
+            if j not in cache:
+                cache[j] = 1
+            else:
+                cache[j] += 1
+    
+    arr = []
+
+    for key, value in cache.items():
+        if value >= len(arrays):
+            arr.append(key)
+    
+    return arr
 
 
 if __name__ == "__main__":
